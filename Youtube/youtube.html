@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>youtube</title>
+    <link rel="stylesheet" href="/style/youtube-header.css">
+    <link rel="stylesheet" href="/style/youtube-sidebar.css">
+    <link rel="stylesheet" href="/style/youtube.css">
+    <link rel="stylesheet" href="/style/youtube-general.css">
+</head>
+<body>
+
+    <div class="header">
+        <div class="left-section">
+            <img class="hamburger-menu" src="/icon/hamburger-menu.svg" alt="">
+            <a href="/youtube.html"><img class="youtube-logo" src="/icon/youtube-logo (1).svg" alt="you tube"></a>
+        </div>
+        <div class="middle-section">
+            <input class="search-bar" type="text" name="search" value="" id="search" placeholder="Search">
+            <button class="search-button">
+                <img class="search-icon" src="/icon/search.svg" alt="">
+                <div class="tooltip">Search</div>
+            </button>
+            <button class="voice-search-button">
+                <img class="voice-search-icon" src="/icon/voice-search-icon.svg" alt="">
+                <div class="tooltip">Search with your Voice</div>
+            </button>
+        </div>
+        <div class="right-section">
+
+            <div class="upload">
+                <img class="upload-icon" src="/icon/upload.svg" alt="upload">
+                <div class="tooltip">Create</div>
+            </div>
+
+            <div class="youtube-apps">
+                <img class="youtube-apps-icon" src="/icon/youtube-apps.svg" alt="youtube-apps">
+                <div class="tooltip">Apps</div>
+            </div>
+            <div class="notifications">
+                <img class="notifications-icon" src="/icon/notifications.svg" alt="notifications">
+
+                <div class="tooltip">Notifications</div>
+
+                <div class="notification-number">3</div>
+            </div>
+
+            <img class="Google-account" src="/channel-pictures/IMG_3881.JPG" alt="channel-name">
+
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <div class="sidebar-link">
+            <img src="/icon/home.svg" alt="">
+            <div>Home</div>
+        </div>
+        <div class="sidebar-link">
+            <img src="/icon/explore.svg" alt="">
+            <div>Explore</div>
+        </div>
+        <div class="sidebar-link">
+            <img src="/icon/subscriptions.svg" alt="">
+            <div>Subscriptions</div>
+        </div>
+        <div class="sidebar-link">
+            <img src="/icon/originals.svg" alt="">
+            <div>Originals</div>
+        </div>
+        <div class="sidebar-link">
+            <img src="/icon/youtube-music.svg" alt="">
+            <div>Music</div>
+        </div>
+        <div class="sidebar-link">
+            <img src="icon/library.svg" alt="">
+            <div>Library</div>
+        </div>
+    </div>
+
+    <div class="video-grid js-video-grid"></div>
+
+    <script src="/script/channels.js"></script>
+    <script src="/script/youtube.js"></script>
+</body>
+</html>
