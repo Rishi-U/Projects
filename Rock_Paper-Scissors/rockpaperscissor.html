@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="/Javascript/Rock_paper_scissor/rockpaperscissors.css">
+</head>
+<body>
+    <div class="center">
+        <p class="title">Rock Paper Scissors</p>
+
+        <button class="move-button js-rock-button"> <!-- onclick="playGame('Rock')" --> 
+            <img src="/Javascript/image.js/rock-paper-scissors-icon-14.jpg.png" class="move-icon" alt="Rock">
+            <img src="/Javascript/image.js/rock-paper-scissors-icon-16.jpg.png" class="move-icon1" alt="Rock">
+        </button>
+
+        <button class="move-button js-paper-button" > <!-- onclick="playGame('Paper')" -->
+            <img src="/Javascript/image.js/rock-paper-scissors-icon-17.jpg.png" class="move-icon" alt="Paper">
+            <img src="/Javascript/image.js/rock-paper-scissors-icon-13.jpg.png" class="move-icon1" alt="Paper">
+        </button>
+
+        <button class="move-button js-scissors-button"> <!-- onclick="playGame('Scissors')" --> 
+            <img src="/Javascript/image.js/rock-paper-scissors-icon-15.jpg.png" class="move-icon" alt="Scissors">
+            <img src="/Javascript/image.js/rock-paper-scissors-emoji-cartoon-014-512.png" class="move-icon1" alt="Scissors">
+        </button><br></br>
+
+        <label for="board" id="board1"></label><br></br>
+
+        <label for="board" id="board"></label><br></br>
+
+
+        <p class="js-score"></p> <br></br>
+        <p class="js-confirmation"></p>
+
+        <button class="reset-score-button"> Reset </button>
+
+        <button class="auto-play-button" id="js-auto-play-button"> Autoplay </button>
+    </div>
+
+    <script src="/Javascript/Rock_paper_scissor/rockpaperscisors.js"></script>
+</body>
+</html>
