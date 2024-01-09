@@ -1,0 +1,32 @@
+.span {
+    line-height: 1.47;
+    letter-spacing: -.334px;
+}
+
+.span-anchor {
+    position: relative;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: whitesmoke;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    vertical-align:top;
+}
+
+.span-anchor:hover {
+    color: rgb(0, 102, 204);
+}
+
+.span-link {
+    color: rgb(0, 102, 204);
+    display: inline-block;
+    white-space: nowrap;
+    transition: textDecoration 0.3s ease;
+    cursor: pointer;
+}
+
+.span-link:hover {
+    text-decoration: underline;
+}
