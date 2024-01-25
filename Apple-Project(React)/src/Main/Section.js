@@ -16,7 +16,7 @@ export default function Section1() {
     useEffect(() => {
         const handleResize = () => {
             const width = Reference.current.clientWidth;
-            console.log(width)
+
             if (width >= MIN_WIDTH_THRESHOLD && width < "1069") {
                 setItems("1069");
             } else if (width < MIN_WIDTH_THRESHOLD) {
@@ -115,10 +115,8 @@ export default function Section1() {
 
     return (
         <>
-            {"bhjnbnjh"}
-
             <section ref={Reference} style={{ width: "100%" }}>
-                { }
+                {"Error"}
             </section>
         </>
     );
