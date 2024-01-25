@@ -1,0 +1,68 @@
+export  const data = {
+    0:{
+        id: 0,
+        name: "(apple)",
+        childID: [7,8,9],
+    },
+    1:{
+        id:1,
+        name:"iPhone-15-pro",
+        URL:"https://www.apple.com/v/home/bi/images/heroes/iphone-15-pro/hero_iphone15pro__i70z9oz3hj2i_large_2x.jpg"
+    },
+    2:{
+        id:2,
+        name:"iPhone-15-pro",
+        URL:"https://www.apple.com/v/home/bi/images/heroes/iphone-15-pro/hero_iphone15pro__i70z9oz3hj2i_medium_2x.jpg"
+    },
+    3:{
+        id:3,
+        name:"iPhone-15-pro",
+        URL:'https://www.apple.com/v/home/bi/images/heroes/iphone-15-pro/hero_iphone15pro__i70z9oz3hj2i_small_2x.jpg'
+    },
+    4:{
+        id:4,
+        name:"iPhone-15",
+        URL:"https://www.apple.com/v/home/bi/images/heroes/iphone-15/hero_iphone15_announce__uuemlcwczn6u_large_2x.jpg"
+    },
+    5:{
+        id:5,
+        name:"iPhone-15",
+        URL:'https://www.apple.com/v/home/bi/images/heroes/iphone-15/hero_iphone15_announce__uuemlcwczn6u_medium_2x.jpg'
+    },
+    6:{
+        id:6,
+        name:"iPhone-15",
+        URL:'https://www.apple.com/v/home/bi/images/heroes/iphone-15/hero_iphone15_announce__uuemlcwczn6u_small_2x.jpg'
+    },
+    7:{
+        id:7,
+        name:"1080px",
+        childID:[1,4,10],
+    },
+    8:{
+        id:8,
+        name:"720px",
+        childID:[2,5,11],
+    },
+    9:{
+        id:9,
+        name:"480px",
+        childID:[3,6,12],
+    },
+    10:{
+        id:10,
+        name:"Watch",
+        URL:"https://www.apple.com/v/home/bi/images/heroes/apple-watch-unity/hero_apple_watch_unity__fcd4ixxe9ouq_small_2x.jpg"
+    },
+    11:{
+        id:11,
+        name:"Watch",
+        URL:"https://www.apple.com/v/home/bi/images/heroes/apple-watch-unity/hero_apple_watch_unity__fcd4ixxe9ouq_medium_2x.jpg"
+    },
+    12:{
+        id:12,
+        name:"Watch",
+        URL:"https://www.apple.com/v/home/bi/images/heroes/apple-watch-unity/hero_apple_watch_unity__fcd4ixxe9ouq_largetall_2x.jpg"
+    }
+
+}
