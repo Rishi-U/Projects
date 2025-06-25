@@ -1,185 +1,211 @@
-let computerMove = "";
-let result = "";
-
-let score = (JSON.parse(localStorage.getItem("score"))) || {
-    win:0,
-    lose:0,
-    tie:0
+let score = JSON.parse(localStorage.getItem("score")) || {
+    win: 0,
+    lose: 0,
+    tie: 0
 };
+
+// --- Theme Management ---
+const bodyElement = document.body;
+const themeToggleButton = document.getElementById("js-theme-toggle-button");
+
+// Function to apply the stored theme or default
+function applyTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light-theme') {
+        bodyElement.classList.remove('dark-theme');
+        bodyElement.classList.add('light-theme');
+    } else { // Default to dark-theme or if no theme is saved
+        bodyElement.classList.remove('light-theme');
+        bodyElement.classList.add('dark-theme');
+    }
+}
+
+// Initial application of theme on page load
+applyTheme();
+
+function toggleTheme() {
+    if (bodyElement.classList.contains('dark-theme')) {
+        bodyElement.classList.remove('dark-theme');
+        bodyElement.classList.add('light-theme');
+        localStorage.setItem('theme', 'light-theme');
+    } else {
+        bodyElement.classList.remove('light-theme');
+        bodyElement.classList.add('dark-theme');
+        localStorage.setItem('theme', 'dark-theme');
+    }
+}
+// --- End Theme Management ---
+
+
+// Display initial score when the page loads
+updateScore();
+
+let isAutoPlay = false;
+let intervalId;
 
 function ComputerMove() {
     const randomNum = Math.random();
-
     let computerMove = '';
 
-    if (randomNum >= 0 && randomNum < 1/3) {
-        computerMove = "Rock"
-    } else if (randomNum >= 1/3 && randomNum < 2/3) {
+    if (randomNum >= 0 && randomNum < 1 / 3) {
+        computerMove = "Rock";
+    } else if (randomNum >= 1 / 3 && randomNum < 2 / 3) {
         computerMove = "Paper";
-    } else if (randomNum >= 2/3 && randomNum <1) {
+    } else {
         computerMove = "Scissors";
     }
     return computerMove;
 }
 
-
-function playGame(guess) {
-
+function playGame(playerMove) {
     const computerMove = ComputerMove();
+    let result = "";
 
-    if (guess === "Scissors") {
+    if (playerMove === "Scissors") {
         if (computerMove === "Rock") {
-            result = "you lose.";
+            result = "You lose.";
         } else if (computerMove === "Paper") {
-            result = "you win.";
-        } else if (computerMove === "Scissors") {
-            result = "Tie."; 
+            result = "You win.";
+        } else {
+            result = "Tie.";
         }
-    }
-    else if (guess === "Rock") {
+    } else if (playerMove === "Rock") {
         if (computerMove === "Rock") {
             result = "Tie.";
         } else if (computerMove === "Paper") {
-            result = "you lose.";
-        } else if (computerMove === "Scissors") {
-            result = "you win."; 
+            result = "You lose.";
+        } else {
+            result = "You win.";
         }
-    }
-    else if (guess === "Paper") {
+    } else if (playerMove === "Paper") {
         if (computerMove === "Rock") {
-            result = "you win.";
+            result = "You win.";
         } else if (computerMove === "Paper") {
             result = "Tie.";
-        } else if (computerMove === "Scissors") {
-            result = "you lose."; 
+        } else {
+            result = "You lose.";
         }
     }
 
-    if (result === "you win.") {
+    if (result === "You win.") {
         score.win += 1;
-    }else if (result === "you lose.") {
+    } else if (result === "You lose.") {
         score.lose += 1;
-    }else if (result === "Tie.") {
+    } else {
         score.tie += 1;
     }
 
-    /* localStorage only support string */
-    localStorage.setItem("score",JSON.stringify(score));
-
+    localStorage.setItem("score", JSON.stringify(score));
     updateScore();
 
-    document.getElementById("board").innerHTML = (`you picked ${guess} - Computer picked ${computerMove}`);
-
-    document.querySelector("#board1").innerHTML = result
-
-
-  // document.getElementById("board1").innerHTML = (`win ${score.win} , lose ${score.lose}, tie ${score.tie} `)
+    document.getElementById("board").innerHTML = `You picked ${playerMove} - Computer picked ${computerMove}`;
+    document.querySelector("#board1").innerHTML = result;
 }
 
 function updateScore() {
-    document.querySelector(".js-score").innerHTML = (`win ${score.win} , lose ${score.lose}, tie ${score.tie} `);
+    document.querySelector(".js-score").innerHTML = `Win: ${score.win}, Lose: ${score.lose}, Tie: ${score.tie}`;
 }
-
-let isAutoPlay = false;
-let intervalid;
 
 function autoplay() {
-    let js_stop = document.querySelector("#js-auto-play-button")
+    const autoPlayButton = document.getElementById("js-auto-play-button");
+
     if (!isAutoPlay) {
-        intervalid = setInterval(() => {
-            const autoMove = ComputerMove()
-            playGame(autoMove)}
-        ,1000)
+        intervalId = setInterval(() => {
+            const autoMove = ComputerMove();
+            playGame(autoMove);
+        }, 1000);
         isAutoPlay = true;
-        if (js_stop) {
-            js_stop.innerHTML = "Stop";
-        }
+        autoPlayButton.innerHTML = "Stop Autoplay";
     } else {
-        clearInterval(intervalid)
+        clearInterval(intervalId);
         isAutoPlay = false;
-        if (js_stop) {
-            js_stop.innerHTML = "Autoplay"
-        }
+        autoPlayButton.innerHTML = "Autoplay";
     }
-    
 }
 
-function reset() {
+function resetScore() {
     score.win = 0;
     score.lose = 0;
     score.tie = 0;
-    localStorage.removeItem("score")
+    localStorage.removeItem("score");
     updateScore();
     document.getElementById("board").innerHTML = "";
-
-    document.querySelector("#board1").innerHTML = ""
-//    document.getElementById("board1").innerHTML = (`win ${score.win} , lose ${score.lose}, tie ${score.tie} `);
-
+    document.querySelector("#board1").innerHTML = "";
 }
 
-document.querySelector(".js-rock-button").addEventListener("click", ()=> {
-    playGame("Rock")
-})
+function showConfirmation() {
+    const confirmationElement = document.querySelector(".js-confirmation");
+    confirmationElement.innerHTML = `Are you sure you want to reset the score?
+    <button class="js-reset-confirm-yes reset-confirm-button">Yes</button>
+    <button class="js-reset-confirm-no reset-confirm-button">No</button>`;
 
-document.querySelector(".js-paper-button").addEventListener("click", ()=> {
-    playGame("Paper")
-})
-document.querySelector(".js-scissors-button").addEventListener("click", ()=> {
-    playGame("Scissors")
-})
-document.querySelector(".reset-score-button").addEventListener("click", ()=> {
-    showConfirmation ()
-    hideButton ()
-})
-document.querySelector("#js-auto-play-button").addEventListener("click", ()=> {
-    autoplay()
-})
+    hideMainButtons();
+
+    document.querySelector(".js-reset-confirm-yes").addEventListener("click", () => {
+        resetScore();
+        hideConfirmation();
+        showMainButtons();
+    });
+
+    document.querySelector(".js-reset-confirm-no").addEventListener("click", () => {
+        hideConfirmation();
+        showMainButtons();
+    });
+}
+
+function hideConfirmation() {
+    document.querySelector(".js-confirmation").innerHTML = "";
+}
+
+function hideMainButtons() {
+    document.querySelector(".reset-score-button").style.display = "none";
+    document.querySelector(".auto-play-button").style.display = "none";
+    document.querySelector(".theme-toggle-button").style.display = "none"; // Hide theme button too
+}
+
+function showMainButtons() {
+    document.querySelector(".reset-score-button").style.display = "inline-block";
+    document.querySelector(".auto-play-button").style.display = "inline-block";
+    document.querySelector(".theme-toggle-button").style.display = "inline-block"; // Show theme button too
+}
+
+// --- Event Listeners ---
+document.querySelector(".js-rock-button").addEventListener("click", () => {
+    playGame("Rock");
+});
+
+document.querySelector(".js-paper-button").addEventListener("click", () => {
+    playGame("Paper");
+});
+
+document.querySelector(".js-scissors-button").addEventListener("click", () => {
+    playGame("Scissors");
+});
+
+document.querySelector(".reset-score-button").addEventListener("click", () => {
+    showConfirmation();
+});
+
+document.querySelector("#js-auto-play-button").addEventListener("click", () => {
+    autoplay();
+});
+
+themeToggleButton.addEventListener("click", () => { // Event listener for new theme button
+    toggleTheme();
+});
 
 document.addEventListener("keydown", (event) => {
     if (event.key === "r" || event.key === "R") {
-        playGame("Rock") 
+        playGame("Rock");
     } else if (event.key === "p" || event.key === "P") {
-        playGame("Paper") 
+        playGame("Paper");
     } else if (event.key === "s" || event.key === "S") {
-        playGame("Scissors") 
+        playGame("Scissors");
     } else if (event.key === "a" || event.key === "A") {
-        autoplay()
-    } else if (event.key === "Backspace") {
-        showConfirmation ()
-        hideButton ()
+        autoplay();
+    } else if (event.key === "Escape") {
+        showConfirmation();
+    } else if (event.key === "t" || event.key === "T") { // New shortcut for theme toggle
+        toggleTheme();
     }
-})
-
-let confimation = document.querySelector(".js-confirmation")
-
-function showConfirmation () {
-
-    confimation.innerHTML = `Are you sure to Reset the Score 
-    <button class = "js-reset-confirm-yes reset-confirm-button"> Yes </button>
-    <button class = "js-reset-confirm-no reset-confirm-button"> No </button>`
-
-    let yes = document.querySelector(".js-reset-confirm-yes")
-    yes.addEventListener("click", () => {
-        reset()
-        hideconfirmation ()
-        showButton ()
-    })
-    let no = document.querySelector(".js-reset-confirm-no")
-    no.addEventListener("click", () => {
-        hideconfirmation ()
-        showButton ()
-    })
-}
-
-function hideconfirmation () {
-    confimation.innerHTML=""
-}
-
-function hideButton () {
-    document.querySelector(".reset-score-button").style.display = "none"
-    document.querySelector(".auto-play-button").style.display = "none"
-}
-function showButton () {
-    document.querySelector(".reset-score-button").style.display = "inline-block"
-    document.querySelector(".auto-play-button").style.display = "inline-block"
-}
+});

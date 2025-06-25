@@ -4,40 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <link rel="stylesheet" href="/Javascript/Rock_paper_scissor/rockpaperscissors.css">
+    <link rel="stylesheet" href="/Rock_Paper-Scissors/rockpaperscissors.css">
 </head>
-<body>
-    <div class="center">
+<body class="dark-theme"> <div class="center">
         <p class="title">Rock Paper Scissors</p>
 
-        <button class="move-button js-rock-button"> <!-- onclick="playGame('Rock')" --> 
-            <img src="/Javascript/image.js/rock-paper-scissors-icon-14.jpg.png" class="move-icon" alt="Rock">
-            <img src="/Javascript/image.js/rock-paper-scissors-icon-16.jpg.png" class="move-icon1" alt="Rock">
-        </button>
+        <div class="game-buttons-container">
+            <button class="move-button js-rock-button">
+                <img src="/Rock_Paper-Scissors/Image/rock-paper-scissors-icon-14.jpg.png" class="move-icon" alt="Rock hand gesture">
+                <img src="/Rock_Paper-Scissors/Image/rock-paper-scissors-icon-16.jpg.png" class="move-icon1" alt="Rock icon on hover">
+            </button>
 
-        <button class="move-button js-paper-button" > <!-- onclick="playGame('Paper')" -->
-            <img src="/Javascript/image.js/rock-paper-scissors-icon-17.jpg.png" class="move-icon" alt="Paper">
-            <img src="/Javascript/image.js/rock-paper-scissors-icon-13.jpg.png" class="move-icon1" alt="Paper">
-        </button>
+            <button class="move-button js-paper-button">
+                <img src="/Rock_Paper-Scissors/Image/rock-paper-scissors-icon-17.jpg.png" class="move-icon" alt="Paper hand gesture">
+                <img src="/Rock_Paper-Scissors/Image/rock-paper-scissors-icon-13.jpg.png" class="move-icon1" alt="Paper icon on hover">
+            </button>
 
-        <button class="move-button js-scissors-button"> <!-- onclick="playGame('Scissors')" --> 
-            <img src="/Javascript/image.js/rock-paper-scissors-icon-15.jpg.png" class="move-icon" alt="Scissors">
-            <img src="/Javascript/image.js/rock-paper-scissors-emoji-cartoon-014-512.png" class="move-icon1" alt="Scissors">
-        </button><br></br>
+            <button class="move-button js-scissors-button">
+                <img src="/Rock_Paper-Scissors/Image/rock-paper-scissors-icon-15.jpg.png" class="move-icon" alt="Scissors hand gesture">
+                <img src="/Rock_Paper-Scissors/Image/rock-paper-scissors-emoji-cartoon-014-512.png" class="move-icon1" alt="Scissors icon on hover">
+            </button>
+        </div>
 
-        <label for="board" id="board1"></label><br></br>
+        <p id="board1" class="result"></p>
+        <p id="board" class="result"></p>
 
-        <label for="board" id="board"></label><br></br>
+        <p class="js-score score"></p>
+        <p class="js-confirmation confirmation-message"></p>
 
-
-        <p class="js-score"></p> <br></br>
-        <p class="js-confirmation"></p>
-
-        <button class="reset-score-button"> Reset </button>
-
-        <button class="auto-play-button" id="js-auto-play-button"> Autoplay </button>
+        <div class="control-buttons-container">
+            <button class="reset-score-button"> Reset </button>
+            <button class="auto-play-button" id="js-auto-play-button"> Autoplay </button>
+            <button class="theme-toggle-button" id="js-theme-toggle-button">Toggle Theme</button>
+        </div>
     </div>
 
-    <script src="/Javascript/Rock_paper_scissor/rockpaperscisors.js"></script>
+    <script src="/Rock_Paper-Scissors/rockpaperscisors.js"></script>
 </body>
 </html>
